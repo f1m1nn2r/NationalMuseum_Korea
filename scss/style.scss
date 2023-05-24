@@ -32,16 +32,16 @@ a{text-decoration:none;
 }
 
 .at-header{@include conSize(calc(100% - 16vw), null); @include position(fixed, 6.551%, null, null, 0, 999); padding:0 8vw; transition:top .5s cubic-bezier(0.215, 0.61, 0.355, 1);
-    .header-inner{@include conSize(null, 5.9vw, 5.9vw); @include dis-flex(center, space-between, null); padding:0 5vw 0 1.5vw; background:#E1E1E1; border-radius:15px;
-        .logo-box{}
+    .header-inner{@include conSize(null, 5.9vw, 5.9vw); @include dis-flex(center, space-between, null); padding:0 5.5vw 0 2.3vw; background:#E1E1E1; border-radius:15px;
+        .logo-box{line-height:1;}
         .menu-ul{@include dis-flex(center, null, null); column-gap:2.6vw;
-            a{@include font(1.3vw, 600, null, $black);}
+            a{@include font(1.25vw, 600, $noto, $black);}
         }
         .lang-ul{position:relative;
-            & > li{@include dis-flex(center, null, null); 
+            & > li{@include dis-flex(center, null, null); @include ss_txt; font-weight:500; cursor:pointer;
                 span{@include conSize(0.6vw, 1vw, null); @include dis-flex(center, null, null); position:relative; margin:0 0 0 .8vw;
                     &::before, &::after{content:''; @include conSize(100%, 2px, null); position:absolute; background:$black;}
-                    &::before{right:.4vw; transform:rotate(45deg)}
+                    &::before{right:.35vw; transform:rotate(45deg)}
                     &::after{transform:rotate(-45deg)}
                 }
             }
@@ -66,7 +66,7 @@ a{text-decoration:none;
                             // }
                         }
                     }
-                    p{padding:0.7vw 0 0 0; @include ss_txt;}
+                    p{padding:0.7vw 0 0 0; @include font(.9vw, 400, $noto, $black);}
                 }
                 .img-box{@include conSize(30vw, 25vw, null); transform-origin:left; background:$gray; border-radius:30px; }
                 &-active{margin-right:-43vw;
@@ -113,15 +113,15 @@ a{text-decoration:none;
                     }
                 }
             }
-            .intro-txt-box{@include dis-flex(null, center, null); column-gap:1.5vw; margin:8vw 0 0 0;
-                h1{@include dis-flex(null, null, null); column-gap:1.5vw; position:relative; @include font(2.7vw, 500, null, $black);
+            .intro-txt-box{@include dis-flex(null, center, null); column-gap:1.8vw; margin:8vw 0 0 0;
+                h1{@include dis-flex(null, null, null); column-gap:1.8vw; position:relative; @include font(2.7vw, 500, null, $black);
                     &::after{content:""; @include conSize(13.456vw, 2px, 2px); display:block; margin:2.5vw 0 0 0; background:$black;}
                 }
                 .content{
                     span{display:block; font-family:inherit}
                     b{font-family:inherit;}
                     h2{@include font(1.3vw, 400, $noto, null);}
-                    p{line-height:1.5; margin:1.3vw 0 2vw; @include font(.95vw, 400, $noto, null);}
+                    p{line-height:1.5; margin:1.3vw 0 2.4vw; @include font(.95vw, 400, $noto, null);}
                     a{@include ss_arrow;}
                 }
             }
@@ -137,25 +137,25 @@ a{text-decoration:none;
     }
     .section03{
         &-inner{
-            .tit-box{@include dis-flex(center, space-between, null); padding:1.5vw 8vw; border:2px solid $black; border-left:0; border-right:0;
+            .tit-box{@include dis-flex(center, space-between, null); padding:1.5vw 8vw; border:3px solid $black; border-left:0; border-right:0;
                 p{@include ss_txt;}
                 a{@include ss_arrow; @include ss_txt;}
             }
             .preview_box{
-                li{@include dis-flex(flex-end, space-between, null); @include increment; padding:2vw 8vw; border-bottom:2px solid $black;
+                li{@include dis-flex(flex-end, space-between, null); @include increment; padding:2vw 8vw; border-bottom:3px solid $black;
                     &::before{position:absolute; top:4vw; margin:0; padding:0;}
                     .intro-txt-box{@include dis-flex(center, null, null); column-gap:3.5vw;
                         h1{padding:0 0 0 2.5vw; @include b_txt; font-family:$noto;}
                         .img-box{@include conSize(20vw, 7.5vw, null); border-radius:10vw; background:$gray;}
                     }
-                    .date-box{text-align:center;
+                    .date-box{padding:0 0 1vw 0; text-align:center;
                         span{@include ss_txt; font-size:.8vw;}
                         p{padding:0.3vw 0 0 0; @include font(1.05vw, 600, $noto, $black);}
                     }
                 }
             }
         }
-        .infinite-banner-box{position:relative; padding:1.9vw 0; white-space:nowrap; @include ss_txt; border-bottom:2px solid $black;
+        .infinite-banner-box{position:relative; padding:1.9vw 0; white-space:nowrap; @include ss_txt; border-bottom:3px solid $black;
             .inner{@include dis-flex(center, null, null); column-gap:1.6vw; @include position(absolute, 50%, null, null, null, null); transform:translateY(-50%); margin:0 0 0 -30vw;
                 span{display:block;}
             }
@@ -166,22 +166,24 @@ a{text-decoration:none;
             h1{padding:0 0 3vw 0; @include b_txt; text-transform:uppercase;}
         }
         &-inner{overflow-y:hidden; overflow-x:scroll; 
-            .timeline-wrap{width:3640px; display:grid; grid-auto-flow:dense; row-gap:12px; position:relative; z-index:1; padding:3vw 0 1vw 1.5vw; border-bottom:2px solid $black; 
-                .timeline-ul{height:100%; display:grid; grid-template-columns:repeat(13, 280px); position:absolute; z-index:-1; border:2px solid $black;
-                    li{padding:0.8vw 1.5vw; @include ss_txt; border-right:2px solid $black;}
+            .timeline-wrap{width:3640px; display:grid; grid-auto-flow:dense; row-gap:12px; position:relative; z-index:1; padding:3vw 0 1vw 0; border-bottom:3px solid $black; 
+                .timeline-ul{height:100%; display:grid; grid-template-columns:repeat(13, 13.5vw); grid-column:1 / span 13; position:absolute; z-index:-1; border:3px solid $black;
+                    li{padding:0.8vw 1.2vw; @include ss_txt; font-weight:500; border-right:3px solid $black;
+                        &:last-child{border-right:none;}
+                    }
                 }
-                .timeline{display:grid; background:$gray; border:2px solid $gray; border-radius:23px;
-                    .schedule-head{min-width:300px; max-width:340px; padding:30px; background:#fff; border-radius:23px;
+                .timeline{display:grid; margin:0 0 0 1.5vw; background:$gray; border:2px solid $gray; border-radius:25px;
+                    .schedule-head{min-width:300px; max-width:340px; padding:30px; margin:1px; background:#fff; border-radius:23px;
                         .txt-box{
                             h1{@include dis-flex(flex-end, null, null); padding:0 0 1.3vw 0; @include font(1.6vw, 400, $noto, $black);
-                                p{@include font(1vw, inherit, inherit, inherit);}
+                                p{@include font(1.05vw, inherit, inherit, inherit);}
                             }
                             & > p{position:relative; padding:0.5vw 0 1.46vw 0;
                                 span{line-height:1.7; display:block; @include font(0.75vw, 400, $noto, null);}
-                                &::before{content:""; @include conSize(10px, 2px, null); position:absolute; top:0; background:$black;}
+                                &::before{content:""; @include conSize(10px, 3px, null); position:absolute; top:0; background:$black;}
                             }
                         }
-                        a{max-width:100px; display:block; padding:0.4vw 0.5vw; margin:0 auto; margin-right:0; @include font(0.8vw, 400, null, $black); border:1px solid $black; border-radius:3vw; text-align:center;}
+                        a{max-width:100px; display:block; padding:0.5vw 0.2vw; margin:0 auto; margin-right:0; @include font(0.75vw, 400, null, $black); border:2px solid $black; border-radius:0.73vw; text-align:center;}
                     }
                     &_01{grid-column:1 / span 1}
                     &_02{grid-column:1 / span 1}
@@ -231,14 +233,22 @@ a{text-decoration:none;
                 }
             }
             .map-box{@include dis-flex(null, space-between, null); padding:5vw 8.3vw 0 8.3vw; background:#161B0C;
-                .sticker{@include conSize(null, 2.3vw, 2.4vw); display:block; padding:0 1.5vw; @include ss_txt; color:$gray; background:$lightGray; border-radius:10vw;}
+                .sticker{@include conSize(null, 2.5vw, 2.6vw); display:block; padding:0 1.4vw; @include ss_txt; font-weight:500; color:$gray; background:$lightGray; border-radius:10vw;}
                 .map-toggle{@include conSize(300px, null, null); @include dis-flex(null, null, column); overflow:hidden; border-radius:1vw 1vw 0 0;
-                    li{flex-grow:0; padding:1.5vw; background:#fff; border-bottom:1px solid $black;
-                        .tit-box{@include dis-flex(null, null, null);}
-                        .content-box{
-                            span{display:block;}
+                    li{padding:1.5vw; background:#fff; border-bottom:3px solid $black;
+                        .tit-box{@include dis-flex(flex-start, null, null);
+                            p{white-space:nowrap; text-overflow:ellipsis; overflow:hidden; @include ss_txt;  font-size:1.5vw;}
+                            span{display:block; padding:.5vw 0 0 0;}
                         }
-                        &.active{flex-grow:1; background:$lightGray;}
+                        .content-box{max-height:0; overflow:hidden;
+                            span{line-height:1.6; display:block; @include ss_txt; font-weight:500; text-transform:uppercase; }
+                        }
+                        &.active{background:$lightGray;
+                            .tit-box{
+                                p{white-space:initial; text-overflow:initial; overflow:initial;}
+                            }
+                            .content-box{max-height:100em; padding:2vw 0 0 0;}
+                        }
                     }
                 }
             }
@@ -253,11 +263,11 @@ a{text-decoration:none;
         &-inner{
             .sns-box{@include dis-flex(center, space-between, null); padding:5.5vw 8.3vw; background:$gray;}
             .sitemap-container{@include dis-flex(null, null, null); flex-flow:wrap; column-gap:1vw; padding:5.5vw 8.3vw;
-                .sitemap_comm{padding:1.5vw; margin:0 0 -1px 0; border:1px solid $black; border-left:0; border-right:0;
+                .sitemap_comm{padding:1.5vw; margin:0 0 -2px 0; border:3px solid $black; border-left:0; border-right:0;
                     .tit-box{@include dis-flex(center, space-between, null);
                         p{@include font(1.5vw, 400, $noto, $black);}
                         .arrow{@include conSize(1.3vw, 1.4vw, null); @include dis-flex(center, center, null); position:relative;
-                            &::before, &::after{content:""; @include conSize(100%, 1px, null); position:absolute; background:$black;}
+                            &::before, &::after{content:""; @include conSize(100%, 2px, null); position:absolute; background:$black;}
                             &::before{right:.89vw; transform:rotate(45deg)}
                             &::after{transform:rotate(-45deg)}
                         }
