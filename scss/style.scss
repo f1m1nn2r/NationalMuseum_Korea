@@ -8,7 +8,7 @@ $lightGray:#D9D9D9;
 $black:#000;
 
 body{padding:15.1vw 0 0 0; overflow-x:hidden; background:$basic;}
-*{margin:0; padding:0; font-family:$inter;}
+*{margin:0; padding:0; box-sizing:border-box; font-family:$inter;}
 ul, li{list-style:none;}
 a{text-decoration:none;
     &:focus, &:active{outline:none; box-shadow:none;}
@@ -31,10 +31,10 @@ a{text-decoration:none;
     &::before{content:counter(li-counter, decimal-leading-zero); padding:1vw 0 0 0; margin:0 1vw 0 0; @include ss_txt; font-size:1vw; border-bottom:1px solid $black;}
 }
 
-.at-header{@include conSize(calc(100% - 16vw), null); @include position(fixed, 6.551%, null, null, 0, 999); padding:0 8vw; transition:top .5s cubic-bezier(0.215, 0.61, 0.355, 1);
-    .header-inner{@include conSize(null, 5.9vw, 5.9vw); @include dis-flex(center, space-between, null); padding:0 5.5vw 0 2.3vw; background:#E1E1E1; border-radius:15px;
+.at-header{@include conSize(100%, null); @include position(fixed, 6.551%, null, null, 50%, 999); transform:translateX(-50%); padding:0 8vw; transition:top .5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    .header-inner{@include conSize(null, 5.9vw, 5.9vw); @include dis-flex(center, space-between, null); position:relative; padding:0 5.5vw 0 2.3vw; background:#E1E1E1; border-radius:15px;
         .logo-box{line-height:1;}
-        .menu-ul{@include dis-flex(center, null, null); column-gap:2.6vw;
+        .menu-ul{@include dis-flex(center, null, null); column-gap:2.6vw; position:absolute; left:50%; transform:translateX(-50%);
             a{@include font(1.25vw, 600, $noto, $black);}
         }
         .lang-ul{position:relative;
@@ -137,12 +137,12 @@ a{text-decoration:none;
     }
     .section03{
         &-inner{
-            .tit-box{@include dis-flex(center, space-between, null); padding:1.5vw 8vw; border:3px solid $black; border-left:0; border-right:0;
+            .tit-box{@include dis-flex(center, space-between, null); padding:1.5vw 8vw; border:2px solid $black; border-left:0; border-right:0;
                 p{@include ss_txt;}
                 a{@include ss_arrow; @include ss_txt;}
             }
             .preview_box{
-                li{@include dis-flex(flex-end, space-between, null); @include increment; padding:2vw 8vw; border-bottom:3px solid $black;
+                li{@include dis-flex(flex-end, space-between, null); @include increment; padding:2vw 8vw; border-bottom:2px solid $black;
                     &::before{position:absolute; top:4vw; margin:0; padding:0;}
                     .intro-txt-box{@include dis-flex(center, null, null); column-gap:3.5vw;
                         h1{padding:0 0 0 2.5vw; @include b_txt; font-family:$noto;}
@@ -155,7 +155,7 @@ a{text-decoration:none;
                 }
             }
         }
-        .infinite-banner-box{position:relative; padding:1.9vw 0; white-space:nowrap; @include ss_txt; border-bottom:3px solid $black;
+        .infinite-banner-box{position:relative; padding:1.9vw 0; white-space:nowrap; @include ss_txt; border-bottom:2px solid $black;
             .inner{@include dis-flex(center, null, null); column-gap:1.6vw; @include position(absolute, 50%, null, null, null, null); transform:translateY(-50%); margin:0 0 0 -30vw;
                 span{display:block;}
             }
@@ -163,32 +163,32 @@ a{text-decoration:none;
     }
     .section04{padding:8.3vw 0 8.3vw 8vw;
         .timeline-head{
-            h1{padding:0 0 3vw 0; @include b_txt; text-transform:uppercase;}
+            h1{padding:0 0 3.4vw 0; @include b_txt; text-transform:uppercase;}
         }
         &-inner{overflow-y:hidden; overflow-x:scroll; 
-            .timeline-wrap{width:3640px; display:grid; grid-auto-flow:dense; row-gap:12px; position:relative; z-index:1; padding:3vw 0 1vw 0; border-bottom:3px solid $black; 
-                .timeline-ul{height:100%; display:grid; grid-template-columns:repeat(13, 13.5vw); grid-column:1 / span 13; position:absolute; z-index:-1; border:3px solid $black;
-                    li{padding:0.8vw 1.2vw; @include ss_txt; font-weight:500; border-right:3px solid $black;
+            .timeline-wrap{ display:grid; grid-auto-flow:dense; row-gap:12px; position:relative; z-index:1; padding:3vw 0 1vw 0;
+                .timeline-ul{height:100%; display:grid; grid-template-columns:repeat(13, 13.5vw); grid-column:1 / span 13; position:absolute; z-index:-1; border:2px solid $black;
+                    li{padding:0.8vw 1.2vw; @include ss_txt; font-weight:500; border-right:2px solid $black;
                         &:last-child{border-right:none;}
                     }
                 }
-                .timeline{display:grid; margin:0 0 0 1.5vw; background:$gray; border:2px solid $gray; border-radius:25px;
-                    .schedule-head{min-width:300px; max-width:340px; padding:30px; margin:1px; background:#fff; border-radius:23px;
+                .timeline{display:grid; margin:0 0 0 1.5vw; background:$gray; border:1px solid $gray; border-radius:25px;
+                    .schedule-head{width:20vw; min-width:300px; max-width:340px; padding:1.5vw 1.5vw 1.7vw 1.7vw; margin:1px; background:#fff; border-radius:23px;
                         .txt-box{
                             h1{@include dis-flex(flex-end, null, null); padding:0 0 1.3vw 0; @include font(1.6vw, 400, $noto, $black);
                                 p{@include font(1.05vw, inherit, inherit, inherit);}
                             }
-                            & > p{position:relative; padding:0.5vw 0 1.46vw 0;
+                            & > p{position:relative; padding:0.6vw 0 1.46vw 0;
                                 span{line-height:1.7; display:block; @include font(0.75vw, 400, $noto, null);}
-                                &::before{content:""; @include conSize(10px, 3px, null); position:absolute; top:0; background:$black;}
+                                &::before{content:""; @include conSize(10px, 2px, null); position:absolute; top:0; background:$black;}
                             }
                         }
-                        a{max-width:100px; display:block; padding:0.5vw 0.2vw; margin:0 auto; margin-right:0; @include font(0.75vw, 400, null, $black); border:2px solid $black; border-radius:0.73vw; text-align:center;}
+                        a{width:5.5vw; max-width:100px; display:block; padding:0.5vw 0.2vw; margin:0 auto; margin-right:0; @include font(0.75vw, 400, null, $black); border:1px solid $black; border-radius:0.73vw; text-align:center;}
                     }
-                    &_01{grid-column:1 / span 1}
-                    &_02{grid-column:1 / span 1}
-                    &_03{grid-column:3 / span 3}
-                    &_04{grid-column:3 / span 3}
+                    &_01{grid-column-start:1; grid-column-end:4;}
+                    &_02{grid-column-start:1; grid-column-end:4;}
+                    &_03{grid-column-start:6; grid-column-end:4;}
+                    &_04{grid-column-start:6; grid-column-end:4;}
                 }
             }
         }
@@ -263,7 +263,7 @@ a{text-decoration:none;
         &-inner{
             .sns-box{@include dis-flex(center, space-between, null); padding:5.5vw 8.3vw; background:$gray;}
             .sitemap-container{@include dis-flex(null, null, null); flex-flow:wrap; column-gap:1vw; padding:5.5vw 8.3vw;
-                .sitemap_comm{padding:1.5vw; margin:0 0 -2px 0; border:3px solid $black; border-left:0; border-right:0;
+                .sitemap_comm{padding:1.5vw; margin:0 0 -2px 0; border:2px solid $black; border-left:0; border-right:0;
                     .tit-box{@include dis-flex(center, space-between, null);
                         p{@include font(1.5vw, 400, $noto, $black);}
                         .arrow{@include conSize(1.3vw, 1.4vw, null); @include dis-flex(center, center, null); position:relative;
@@ -273,12 +273,19 @@ a{text-decoration:none;
                         }
                     }
                 }
-                .half{@include conSize(calc(50% - 3.5vw), null, null);}
+                .half{@include conSize(calc(50% - .5vw), null, null);}
                 .allmenu-wrap{@include conSize(100%, null, null);}
             }
         }
     }
     .section08{background:$gray;
-        &-inner{padding:8.3vw}
+        &-inner{@include dis-flex(null, space-between, null); padding:2.5vw 8.3vw;
+            .info-box{@include dis-flex(null, null, column); row-gap:1.2vw;
+                li{@include dis-flex(center, null, null);
+                    p{padding:0 0 5px 0; @include font(13px, 400, $noto, #2c2c2c);}
+                    a, span{line-height:1.5; display:block; @include font(11px, 400, $noto, #2C2C2C);}
+                }
+            }
+        }
     }
 }
