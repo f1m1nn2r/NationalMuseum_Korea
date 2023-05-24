@@ -11,8 +11,21 @@
 <body>
     <header class="at-header">
         <div class="header-inner">
-            <ul>
-                <li><a href=""></a></li>
+            <a class="logo-box"><img src="" alt="국립중앙박물관 로고"></a>
+            <ul class="menu-ul">
+                <li><a href="">소개 정보</a></li>
+                <li><a href="">전시</a></li>
+                <li><a href="">소장품</a></li>
+                <li><a href="">학술 출판</a></li>
+                <li><a href="">소식</a></li>
+            </ul>
+            <ul class="lang-ul">
+                <li>KOR<span class="arrow"></span></li>
+                <ul class="lang-list">
+                    <li><a href="">English</a></li>
+                    <li><a href="">日本語</a></li>
+                    <li><a href="">中文</a></li>
+                </ul>
             </ul>
         </div>
     </header>
@@ -22,9 +35,29 @@
                 <div class="swiper-slide">
                     <div class="txt-box">
                         <h1>
-                            <span>new.</span>
-                            <span>keywords</span>
-                            <span>on art</span>
+                            <span>
+                                <span>n</span>
+                                <span>e</span>
+                                <span>w</span>
+                                <span>.</span>
+                            </span>
+                            <span>
+                                <span>k</span>
+                                <span>e</span>
+                                <span>y</span>
+                                <span>w</span>
+                                <span>o</span>
+                                <span>r</span>
+                                <span>d</span>
+                                <span>s</span>
+                            </span>
+                            <span>
+                                <span>o</span>
+                                <span>n</span>
+                                <span>a</span>
+                                <span>r</span>
+                                <span>t</span>
+                            </span>
                         </h1>
                         <p>_미술의 새로운 키워드</p>
                     </div>
@@ -33,8 +66,22 @@
                 <div class="swiper-slide">
                     <div class="txt-box">
                         <h1>
-                            <span>art.</span>
-                            <span>space now</span>
+                            <span>
+                                <span>a</span>
+                                <span>r</span>
+                                <span>t</span>
+                                <span>.</span>
+                            </span>
+                            <span>
+                                <span>s</span>
+                                <span>p</span>
+                                <span>a</span>
+                                <span>c</span>
+                                <span>e</span>
+                                <span>n</span>
+                                <span>o</span>
+                                <span>w</span>
+                            </span>
                         </h1>
                     </div>
                     <div class="img-box"></div>
@@ -56,7 +103,8 @@
                     <h1>Our Museum</h1>
                     <div class="content">
                         <h2>
-                            <span>역사와 문화가 살아 숨 쉬고, <b>과거와 현재, 미래가 공존</b>하는 감동의 공간인</span>
+                            <span>
+                                역사와 문화가 살아 숨 쉬고, <b>과거와 현재, 미래가 공존</b>하는 감동의 공간인</span>
                             <span>국립중앙박물관에 오신 것을 환영합니다.</span>
                         </h2>
                         <p>
@@ -120,21 +168,23 @@
                 </ul>
             </div>
             <div class="infinite-banner-box">
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
-                <span>SELECTED SHOWING</span>
+                <div class="inner">
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                    <span>SELECTED SHOWING</span>
+                </div>
             </div>
         </section>
         <section class="section section04">
+            <div class="timeline-head"><h1>friday, april 14</h1></div>
             <div class="section04-inner">
-                <div class="timeline-head"><h1>friday, april 14</h1></div>
                 <div class="timeline-wrap">
                     <ul class="timeline-ul">
                         <li>9:00 AM</li>
@@ -318,16 +368,18 @@
         </section>
         <section class="section section07">
             <div class="infinite-banner-box">
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
-                <span>placeat</span>
+                <div class="inner">
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                    <span>placeat</span>
+                </div>
             </div>
             <div class="section07-inner">
                 <ul class="sns-box">
@@ -409,7 +461,7 @@
                 prevEl:".swiper-button-prev",
             },
             speed:700,
-            loop:true,
+            
         });
         var SecSwiper = new Swiper('.notice-box.swiper-container', {
             slidesPerView:4,

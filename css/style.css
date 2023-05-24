@@ -19,6 +19,10 @@ ul, li {
 a {
   text-decoration: none;
 }
+a:focus, a:active {
+  outline: none;
+  box-shadow: none;
+}
 
 .at-header {
   width: calc(100% - 16vw);
@@ -27,12 +31,65 @@ a {
   left: 0;
   z-index: 999;
   padding: 0 8vw;
+  transition: top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .at-header .header-inner {
   height: 5.9vw;
   line-height: 5.9vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw 0 1.5vw;
   background: #E1E1E1;
   border-radius: 15px;
+}
+.at-header .header-inner .menu-ul {
+  display: flex;
+  align-items: center;
+  column-gap: 2.6vw;
+}
+.at-header .header-inner .menu-ul a {
+  font-size: 1.3vw;
+  font-weight: 600;
+  color: #000;
+}
+.at-header .header-inner .lang-ul {
+  position: relative;
+}
+.at-header .header-inner .lang-ul > li {
+  display: flex;
+  align-items: center;
+}
+.at-header .header-inner .lang-ul > li span {
+  width: 0.6vw;
+  height: 1vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0 0 0 0.8vw;
+}
+.at-header .header-inner .lang-ul > li span::before, .at-header .header-inner .lang-ul > li span::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  background: #000;
+}
+.at-header .header-inner .lang-ul > li span::before {
+  right: 0.4vw;
+  transform: rotate(45deg);
+}
+.at-header .header-inner .lang-ul > li span::after {
+  transform: rotate(-45deg);
+}
+.at-header .header-inner .lang-ul .lang-list {
+  line-height: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.at-header.scroll {
+  top: -6.551vw;
 }
 
 .container_wide .section01 {
@@ -52,6 +109,7 @@ a {
   position: absolute;
   top: 50%;
   left: 29%;
+  z-index: 55;
   transform: translateY(-50%);
 }
 .container_wide .section01-inner .swiper-slide .txt-box h1 {
@@ -62,18 +120,20 @@ a {
   font-size: 1.9vw;
   text-transform: uppercase;
 }
-.container_wide .section01-inner .swiper-slide .txt-box h1 span {
-  display: block;
+.container_wide .section01-inner .swiper-slide .txt-box h1 > span {
+  display: flex;
+  overflow: hidden;
 }
 .container_wide .section01-inner .swiper-slide .txt-box p {
   padding: 0.7vw 0 0 0;
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
 }
 .container_wide .section01-inner .swiper-slide .img-box {
   width: 30vw;
   height: 25vw;
+  transform-origin: left;
   background: #545454;
   border-radius: 30px;
 }
@@ -90,9 +150,13 @@ a {
   color: #000;
   color: #121607;
 }
+.container_wide .section01-inner .swiper-slide-active .txt-box h1 > span > span {
+  transform: translateY(0);
+}
 .container_wide .section01-inner .swiper-slide-active .img-box {
   width: 51vw;
   height: 35vw;
+  transform: scale(1);
 }
 .container_wide .section01 .arrow-box {
   width: 10.77%;
@@ -178,7 +242,7 @@ a {
   padding: 1vw 0 0 0;
   margin: 0 1vw 0 0;
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   font-size: 1vw;
   border-bottom: 1px solid #000;
@@ -224,7 +288,7 @@ a {
 }
 .container_wide .section02-inner .intro-txt-box .content h2 {
   font-size: 1.3vw;
-  font-weight: 500;
+  font-weight: 400;
   font-family: "Noto Sans KR", sans-serif;
 }
 .container_wide .section02-inner .intro-txt-box .content p {
@@ -239,7 +303,7 @@ a {
   align-items: flex-end;
   column-gap: 0.7vw;
   font-size: 1.1vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
 }
 .container_wide .section02-inner .intro-txt-box .content a span {
@@ -275,6 +339,9 @@ a {
   background: #E1E1E1;
   border-radius: 15px;
 }
+.container_wide .section02.ani .intro-txt-box .content b {
+  font-weight: 700;
+}
 .container_wide .section03-inner .tit-box {
   display: flex;
   align-items: center;
@@ -286,7 +353,7 @@ a {
 }
 .container_wide .section03-inner .tit-box p {
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
 }
 .container_wide .section03-inner .tit-box a {
@@ -294,10 +361,10 @@ a {
   align-items: flex-end;
   column-gap: 0.7vw;
   font-size: 1.1vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
 }
 .container_wide .section03-inner .tit-box a span {
@@ -339,7 +406,7 @@ a {
   padding: 1vw 0 0 0;
   margin: 0 1vw 0 0;
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   font-size: 1vw;
   border-bottom: 1px solid #000;
@@ -374,7 +441,7 @@ a {
 }
 .container_wide .section03-inner .preview_box li .date-box span {
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   font-size: 0.8vw;
 }
@@ -386,30 +453,40 @@ a {
   color: #000;
 }
 .container_wide .section03 .infinite-banner-box {
+  position: relative;
+  padding: 1.9vw 0;
+  white-space: nowrap;
+  font-size: 1.05vw;
+  font-weight: 400;
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+.container_wide .section03 .infinite-banner-box .inner {
   display: flex;
   align-items: center;
   column-gap: 1.6vw;
-  padding: 1.5vw 0;
-  white-space: nowrap;
-  font-size: 1.05vw;
-  font-weight: 500;
-  color: #000;
-  border-bottom: 2px solid #000;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 0 0 -30vw;
+}
+.container_wide .section03 .infinite-banner-box .inner span {
+  display: block;
 }
 .container_wide .section04 {
   padding: 8.3vw 0 8.3vw 8vw;
 }
-.container_wide .section04-inner {
-  overflow-y: hidden;
-  overflow-x: scroll;
-}
-.container_wide .section04-inner .timeline-head h1 {
+.container_wide .section04 .timeline-head h1 {
   padding: 0 0 3vw 0;
   line-height: 1.15;
   font-size: 5.3vw;
   font-weight: 400;
   color: #000;
   text-transform: uppercase;
+}
+.container_wide .section04-inner {
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 .container_wide .section04-inner .timeline-wrap {
   width: 3640px;
@@ -419,6 +496,7 @@ a {
   position: relative;
   z-index: 1;
   padding: 3vw 0 1vw 1.5vw;
+  border-bottom: 2px solid #000;
 }
 .container_wide .section04-inner .timeline-wrap .timeline-ul {
   height: 100%;
@@ -431,7 +509,7 @@ a {
 .container_wide .section04-inner .timeline-wrap .timeline-ul li {
   padding: 0.8vw 1.5vw;
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   border-right: 2px solid #000;
 }
@@ -445,7 +523,6 @@ a {
   min-width: 300px;
   max-width: 340px;
   padding: 30px;
-  margin: 1px;
   background: #fff;
   border-radius: 23px;
 }
@@ -629,7 +706,7 @@ a {
   display: block;
   padding: 0 1.5vw;
   font-size: 1.05vw;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   color: #545454;
   background: #D9D9D9;
@@ -659,13 +736,20 @@ a {
   background: #D9D9D9;
 }
 .container_wide .section07 .infinite-banner-box {
+  position: relative;
+  padding: 3vw 0;
+  background: #ADADAD;
+}
+.container_wide .section07 .infinite-banner-box .inner {
   display: flex;
   align-items: center;
   column-gap: 2.3vw;
-  padding: 1vw 0;
-  background: #ADADAD;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 0 0 40vw;
 }
-.container_wide .section07 .infinite-banner-box span {
+.container_wide .section07 .infinite-banner-box .inner span {
   font-size: 2.3vw;
   font-weight: 400;
   color: #000;

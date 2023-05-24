@@ -10,15 +10,17 @@ $black:#000;
 body{padding:15.1vw 0 0 0; overflow-x:hidden; background:$basic;}
 *{margin:0; padding:0; font-family:$inter;}
 ul, li{list-style:none;}
-a{text-decoration:none;}
+a{text-decoration:none;
+    &:focus, &:active{outline:none; box-shadow:none;}
+}
 
 @mixin conSize($wd:null, $hg:null, $lhg:null){width:$wd; height:$hg; line-height:$lhg;}
 @mixin font($fs:null, $fw:null, $ff:null, $color:null){font-size:$fs; font-weight:$fw; font-family:$ff; color:$color;}
 @mixin dis-flex($ai:null, $jc:null, $ff:null){display:flex; align-items:$ai; justify-content:$jc; flex-flow:$ff;}
 @mixin position($pt:null, $top:null, $right:null, $bottom:null, $left:null, $zd:null){position:$pt; top:$top; right:$right; bottom:$bottom; left:$left; z-index:$zd;}
 @mixin b_txt(){line-height:1.15; @include font(5.3vw, 400, null, $black);}
-@mixin ss_txt(){@include font(1.05vw, 500, null, $black)}
-@mixin ss_arrow(){@include dis-flex(flex-end, null, null); column-gap:0.7vw; @include font(1.1vw, 500, null, $black);
+@mixin ss_txt(){@include font(1.05vw, 400, null, $black)}
+@mixin ss_arrow(){@include dis-flex(flex-end, null, null); column-gap:0.7vw; @include font(1.1vw, 400, null, $black);
     span{@include conSize(2.43vw, 8px, null); display:block; position:relative; margin:0 0 5px 0;
         &::before, &::after{content:""; position:absolute; background:$black;}
         &::before{@include conSize(100%, 1px, null); left:0; bottom:0;}
@@ -29,26 +31,53 @@ a{text-decoration:none;}
     &::before{content:counter(li-counter, decimal-leading-zero); padding:1vw 0 0 0; margin:0 1vw 0 0; @include ss_txt; font-size:1vw; border-bottom:1px solid $black;}
 }
 
-.at-header{@include conSize(calc(100% - 16vw), null); @include position(fixed, 6.551%, null, null, 0, 999); padding:0 8vw;
-    .header-inner{@include conSize(null, 5.9vw, 5.9vw); background:#E1E1E1; border-radius:15px;}
+.at-header{@include conSize(calc(100% - 16vw), null); @include position(fixed, 6.551%, null, null, 0, 999); padding:0 8vw; transition:top .5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    .header-inner{@include conSize(null, 5.9vw, 5.9vw); @include dis-flex(center, space-between, null); padding:0 5vw 0 1.5vw; background:#E1E1E1; border-radius:15px;
+        .logo-box{}
+        .menu-ul{@include dis-flex(center, null, null); column-gap:2.6vw;
+            a{@include font(1.3vw, 600, null, $black);}
+        }
+        .lang-ul{position:relative;
+            & > li{@include dis-flex(center, null, null); 
+                span{@include conSize(0.6vw, 1vw, null); @include dis-flex(center, null, null); position:relative; margin:0 0 0 .8vw;
+                    &::before, &::after{content:''; @include conSize(100%, 2px, null); position:absolute; background:$black;}
+                    &::before{right:.4vw; transform:rotate(45deg)}
+                    &::after{transform:rotate(-45deg)}
+                }
+            }
+            .lang-list{line-height:1; @include position(absolute, null, null, null, 50%, null); transform:translateX(-50%)}
+        }
+    }
+    &.scroll{top:-6.551vw}
 }
 
 .container_wide{
     .section01{position:relative;
         &-inner{align-items:center;
             .swiper-slide{@include conSize(calc(100% - 472px), null, null); @include dis-flex(center, center, null); position:relative;
-                .txt-box{@include position(absolute, 50%, null, null, 29%, null); transform:translateY(-50%);
+                .txt-box{@include position(absolute, 50%, null, null, 29%, 55); transform:translateY(-50%);
                     h1{@include b_txt; font-size:1.9vw; text-transform:uppercase;
-                        span{display:block;}
+                        & > span{display:flex; overflow:hidden;
+                            
+                            // & > span{transform:translateY(100%); transition:transform .8s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            //     @for $i from 1 to 9{
+                            //         &:nth-child(#{$i}){transition-delay:$i / 20 + s;}
+                            //     }
+                            // }
+                        }
                     }
                     p{padding:0.7vw 0 0 0; @include ss_txt;}
                 }
-                .img-box{@include conSize(30vw, 25vw, null); background:$gray; border-radius:30px;}
+                .img-box{@include conSize(30vw, 25vw, null); transform-origin:left; background:$gray; border-radius:30px; }
                 &-active{margin-right:-43vw;
                     .txt-box{left:8%;
-                        h1{@include b_txt; color:#121607} 
+                        h1{@include b_txt; color:#121607;
+                            & > span{
+                                & > span{transform:translateY(0);}
+                            }
+                        } 
                     }
-                    .img-box{@include conSize(51vw, 35vw, null); }
+                    .img-box{@include conSize(51vw, 35vw, null); transform:scale(1)}
                 }
             }
         }
@@ -90,13 +119,20 @@ a{text-decoration:none;}
                 }
                 .content{
                     span{display:block; font-family:inherit}
-                    b{font-family:inherit}
-                    h2{@include font(1.3vw, 500, $noto, null);}
+                    b{font-family:inherit;}
+                    h2{@include font(1.3vw, 400, $noto, null);}
                     p{line-height:1.5; margin:1.3vw 0 2vw; @include font(.95vw, 400, $noto, null);}
                     a{@include ss_arrow;}
                 }
             }
             .img-box{@include conSize(100%, 7.81vw, 7.81vw); margin:4vw 0 0 0; background:#E1E1E1; border-radius:15px;}
+        }
+        &.ani{
+            .intro-txt-box{
+                .content{
+                    b{font-weight:700}
+                }
+            }
         }
     }
     .section03{
@@ -119,19 +155,23 @@ a{text-decoration:none;}
                 }
             }
         }
-        .infinite-banner-box{@include dis-flex(center, null, null); column-gap:1.6vw; padding:1.5vw 0; white-space:nowrap; @include ss_txt; border-bottom:2px solid $black;}
+        .infinite-banner-box{position:relative; padding:1.9vw 0; white-space:nowrap; @include ss_txt; border-bottom:2px solid $black;
+            .inner{@include dis-flex(center, null, null); column-gap:1.6vw; @include position(absolute, 50%, null, null, null, null); transform:translateY(-50%); margin:0 0 0 -30vw;
+                span{display:block;}
+            }
+        }
     }
     .section04{padding:8.3vw 0 8.3vw 8vw;
+        .timeline-head{
+            h1{padding:0 0 3vw 0; @include b_txt; text-transform:uppercase;}
+        }
         &-inner{overflow-y:hidden; overflow-x:scroll; 
-            .timeline-head{
-                h1{padding:0 0 3vw 0; @include b_txt; text-transform:uppercase;}
-            }
-            .timeline-wrap{width:3640px; display:grid; grid-auto-flow:dense; row-gap:12px; position:relative; z-index:1; padding:3vw 0 1vw 1.5vw; 
+            .timeline-wrap{width:3640px; display:grid; grid-auto-flow:dense; row-gap:12px; position:relative; z-index:1; padding:3vw 0 1vw 1.5vw; border-bottom:2px solid $black; 
                 .timeline-ul{height:100%; display:grid; grid-template-columns:repeat(13, 280px); position:absolute; z-index:-1; border:2px solid $black;
                     li{padding:0.8vw 1.5vw; @include ss_txt; border-right:2px solid $black;}
                 }
                 .timeline{display:grid; background:$gray; border:2px solid $gray; border-radius:23px;
-                    .schedule-head{min-width:300px; max-width:340px; padding:30px; margin:1px; background:#fff; border-radius:23px;
+                    .schedule-head{min-width:300px; max-width:340px; padding:30px; background:#fff; border-radius:23px;
                         .txt-box{
                             h1{@include dis-flex(flex-end, null, null); padding:0 0 1.3vw 0; @include font(1.6vw, 400, $noto, $black);
                                 p{@include font(1vw, inherit, inherit, inherit);}
@@ -205,8 +245,10 @@ a{text-decoration:none;}
         }
     }
     .section07{
-        .infinite-banner-box{@include dis-flex(center, null, null); column-gap:2.3vw; padding:1vw 0; background:#ADADAD;
-            span{@include font(2.3vw, 400, null, $black); text-transform:uppercase;}
+        .infinite-banner-box{position:relative; padding:3vw 0; background:#ADADAD;
+            .inner{@include dis-flex(center, null, null); column-gap:2.3vw; @include position(absolute, 50%, null, null, null, null); transform:translateY(-50%); margin:0 0 0 40vw;
+                span{@include font(2.3vw, 400, null, $black); text-transform:uppercase;}
+            }
         }
         &-inner{
             .sns-box{@include dis-flex(center, space-between, null); padding:5.5vw 8.3vw; background:$gray;}
